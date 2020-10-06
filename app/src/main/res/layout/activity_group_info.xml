@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".group_info">
+
+    <include
+        layout="@layout/app_bar_layout"
+        android:id="@+id/toolbar"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_below="@id/toolbar"
+        app:civ_border_width="1dp"
+        app:civ_border_color="@color/colorPrimary"
+        android:src="@drawable/profile_image"
+        android:layout_marginLeft="80dp"
+        android:id="@+id/group_icon"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_group_members"
+        android:layout_below="@id/group_icon"
+        android:layout_margin="20dp"
+        android:text="Group members"
+        android:fontFamily="@font/salsa"
+        android:textColor="@color/colorPrimary"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:background="@drawable/edit_text_border_color"
+        android:padding="10dp"
+        android:gravity="center_horizontal" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycleView_for_group_members"
+        android:layout_below="@id/tv_group_members">
+
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>

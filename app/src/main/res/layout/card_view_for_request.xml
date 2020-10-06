@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:visibility="gone"
+    android:id="@+id/ForRequest"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:id="@+id/card_view_for_requests"
+        app:cardElevation="3dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_margin="23dp"
+                app:civ_border_width="1dp"
+                app:civ_border_color="@color/colorPrimary"
+                android:src="@drawable/profile_image"
+                android:id="@+id/UserIcon"/>
+
+            <TextView
+                android:layout_width="260dp"
+                android:layout_height="32dp"
+                android:layout_toRightOf="@id/UserIcon"
+                android:layout_marginTop="23dp"
+                android:text="sample"
+                android:fontFamily="@font/salsa"
+                android:textColor="@color/colorPrimary"
+                android:textSize="22sp"
+                android:textFontWeight="800"
+                android:id="@+id/username"/>
+
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="34dp"
+                android:layout_toRightOf="@id/UserIcon"
+                android:layout_below="@id/username"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/salsa"
+                android:id="@+id/about"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textFontWeight="700"
+                android:text="I am using chatty !"/>
+
+
+            <Button
+                android:layout_width="130dp"
+                android:layout_height="33dp"
+                android:layout_below="@id/UserIcon"
+                android:layout_marginLeft="80dp"
+                android:id="@+id/btn_accept"
+                android:background="#2fc190"
+                android:text="Accept"
+                android:textColor="#000"
+                android:fontFamily="@font/salsa"
+                android:textFontWeight="800"/>
+
+
+            <Button
+                android:layout_width="130dp"
+                android:layout_height="33dp"
+                android:layout_below="@id/UserIcon"
+                android:layout_marginLeft="25dp"
+                android:id="@+id/btn_cancel"
+                android:background="@color/colorPrimary"
+                android:text="Cancel"
+                android:textColor="#000"
+                android:fontFamily="@font/salsa"
+                android:layout_toRightOf="@id/btn_accept"
+                android:textFontWeight="800"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

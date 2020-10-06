@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        app:cardElevation="3dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:id="@+id/card_view_for_user"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                app:civ_border_color="@color/colorPrimary"
+                app:civ_border_width="2dp"
+                android:id="@+id/profile_image_for_user"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                app:civ_border_width="1dp"
+                app:civ_border_color="#2fc190"
+                android:layout_toRightOf="@id/profile_image_for_user"
+                android:layout_below="@id/profile_image_for_user"
+                android:layout_marginLeft="-35dp"
+                android:layout_marginTop="-30dp"
+                android:src="@drawable/online"
+                android:visibility="invisible"
+                android:id="@+id/online"/>
+
+
+            <TextView
+                android:layout_width="240dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="0dp"
+                android:fontFamily="@font/salsa"
+                android:textSize="25sp"
+                android:layout_toRightOf="@id/profile_image_for_user"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/name_user"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:fontFamily="@font/salsa"
+                android:textSize="18sp"
+                android:layout_below="@id/name_user"
+                android:layout_toRightOf="@id/profile_image_for_user"
+                android:textColor="#000"
+                android:id="@+id/last_message"/>
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <RelativeLayout
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:id="@+id/cardView"
+        android:visibility="gone"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/group_chat_right"
+        android:layout_marginRight="0dp">
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/username1"
+            android:text="username"
+            android:textAlignment="center"
+            android:textSize="10sp"
+            android:fontFamily="@font/salsa"
+            android:textFontWeight="800"
+            android:paddingTop="10dp"
+            android:textColor="#fff"
+            android:gravity="center_horizontal" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@id/username1"
+            android:src="@drawable/profile_image"
+            android:id="@+id/usericon1"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="1dp"/>
+
+    </RelativeLayout>
+
+
+
+
+    <ImageView
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:layout_marginRight="76dp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/image"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/edit_text_border_color"
+        android:visibility="gone"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/time1"
+        android:layout_below="@id/image"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="80dp"
+        android:text=""
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#333"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image"
+        android:id="@+id/date1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="140dp"
+        android:layout_marginTop="5dp"
+        android:text=""
+        android:textColor="#000"/>
+
+
+    <RelativeLayout
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:id="@+id/cardView1"
+        android:visibility="gone"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/image"
+        android:background="@drawable/group_chat_right"
+        android:layout_marginRight="0dp">
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/username"
+            android:text="username"
+            android:textAlignment="center"
+            android:textSize="10sp"
+            android:fontFamily="@font/salsa"
+            android:textFontWeight="800"
+            android:paddingTop="10dp"
+            android:textColor="#fff"
+            android:gravity="center_horizontal" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@id/username"
+            android:src="@drawable/profile_image"
+            android:id="@+id/usericon"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="1dp"/>
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="chatty"
+        android:layout_below="@id/cardView1"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:visibility="gone"
+        android:background="@drawable/group_chat_right_username"
+        android:fontFamily="@font/salsa"
+        android:textColor="#000"
+        android:id="@+id/msg"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="80dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/time"
+        android:layout_below="@id/msg"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:text=""
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#333"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/msg"
+        android:id="@+id/date"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="90dp"
+        android:layout_marginTop="5dp"
+        android:text=""
+        android:textColor="#000"/>
+
+
+
+
+
+
+
+
+</RelativeLayout>

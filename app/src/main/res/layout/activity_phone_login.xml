@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PhoneLoginActivity">
+
+    <include
+        layout="@layout/app_bar_layout"
+        android:id="@+id/appbar"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your Mobile number"
+        android:gravity="center"
+        android:layout_below="@id/appbar"
+        android:layout_marginTop="140dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="15dp"
+        android:fontFamily="@font/salsa"
+        android:drawableStart="@drawable/phone"
+        android:textSize="20sp"
+        android:id="@+id/mobile_number"
+        android:textColor="#000"
+        android:textFontWeight="800"
+        android:background="@drawable/edit_text_border_color"
+        android:drawableLeft="@drawable/phone" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter verification code"
+        android:gravity="center"
+        android:layout_below="@id/mobile_number"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="15dp"
+        android:visibility="invisible"
+        android:fontFamily="@font/salsa"
+        android:textSize="20sp"
+        android:id="@+id/verification_code"
+        android:textColor="#000"
+        android:textFontWeight="800"
+        android:background="@drawable/edit_text_border_color"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/verification_code"
+        android:padding="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:id="@+id/btn_verify"
+        android:text="Verify"
+        android:textColor="#fff"
+        android:background="@drawable/button_for_login_signup"
+        android:fontFamily="@font/salsa"
+        android:textFontWeight="800"
+        android:textSize="23sp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_verify"
+        android:textColor="#fff"
+        android:padding="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:id="@+id/btn_verify_code"
+        android:text="Verify Code"
+        android:background="@drawable/button_for_login_signup"
+        android:fontFamily="@font/salsa"
+        android:visibility="invisible"
+        android:textFontWeight="800"
+        android:textSize="23sp"/>
+
+</RelativeLayout>

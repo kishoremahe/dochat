@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/card_view_for_find_friends">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:id="@+id/profilePic"
+                app:civ_border_width="1dp"
+                app:civ_border_color="@color/colorPrimary"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="25dp"
+                android:layout_toRightOf="@id/profilePic"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/salsa"
+                android:textFontWeight="800"
+                android:textSize="22sp"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/username"/>
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/about"
+                android:fontFamily="@font/salsa"
+                android:textSize="20sp"
+                android:padding="3dp"
+                android:textColor="#000"
+                android:textFontWeight="800"
+                android:layout_below="@id/username"
+                android:layout_toRightOf="@id/profilePic"
+                android:layout_toEndOf="@id/profilePic"
+                />
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:text="Admin"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/edit_text_border_color"
+                android:layout_toRightOf="@id/username"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:padding="3dp"
+                android:id="@+id/admin"
+                android:visibility="gone"
+                android:gravity="center_horizontal" />
+
+
+
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

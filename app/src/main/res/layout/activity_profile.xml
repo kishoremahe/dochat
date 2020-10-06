@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+
+    <include
+        layout="@layout/app_bar_layout"
+        android:id="@+id/appbar"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/profile_activity"
+        android:id="@+id/bg"
+        android:layout_below="@id/appbar"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_below="@id/appbar"
+        android:layout_marginLeft="80dp"
+        android:id="@+id/profileImage"
+        android:layout_marginTop="70dp"
+        app:civ_border_color="@color/colorPrimary"
+        app:civ_border_width="2dp"
+        android:src="@drawable/profile_image"/>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/profileImage"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="50dp"
+        android:text=""
+        android:fontFamily="@font/salsa"
+        android:textColor="@color/colorPrimary"
+        android:textSize="28sp"
+        android:textFontWeight="800"
+        android:id="@+id/username"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username"
+        android:id="@+id/about"
+        android:textFontWeight="600"
+        android:textAlignment="center"
+        android:fontFamily="@font/salsa"
+        android:textColor="#000"
+        android:textSize="25sp"
+        android:layout_margin="20dp"
+        android:gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about"
+        android:layout_margin="20dp"
+        android:text="Send message"
+        android:textFontWeight="800"
+        android:background="@drawable/button_for_login_signup"
+        android:fontFamily="@font/salsa"
+        android:textSize="22sp"
+        android:textColor="#fff"
+        android:id="@+id/btn_send_message"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_send_message"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="cancel request"
+        android:textFontWeight="800"
+        android:background="@drawable/button_for_login_signup"
+        android:fontFamily="@font/salsa"
+        android:textSize="22sp"
+        android:visibility="invisible"
+        android:textColor="#fff"
+        android:id="@+id/btn_cancel_request"
+        />
+
+
+</RelativeLayout>

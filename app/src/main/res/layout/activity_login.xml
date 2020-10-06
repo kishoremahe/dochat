@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appbarlayout">
+
+        <include
+            layout="@layout/app_bar_layout"
+            android:id="@+id/app_bar"/>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appbarlayout"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:src="@drawable/login_photo"
+                android:layout_margin="20dp"
+                android:id="@+id/login_image"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/email"
+                android:inputType="textEmailAddress"
+                android:hint="Email"
+                android:fontFamily="@font/quintessential"
+                android:drawableBottom="@color/colorPrimary"
+                android:layout_below="@id/login_image"
+                android:layout_margin="20dp"
+                android:drawableStart="@drawable/email"
+                android:padding="5dp"
+                android:textFontWeight="800"
+                android:drawableLeft="@drawable/email"
+                android:background="@drawable/edit_text_border_color"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/password"
+                android:inputType="textPassword"
+                android:hint="password"
+                android:fontFamily="@font/quintessential"
+                android:drawableBottom="@color/colorPrimary"
+                android:layout_below="@id/email"
+                android:layout_marginTop="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textFontWeight="800"
+                android:drawableStart="@drawable/password"
+                android:padding="5dp"
+                android:drawableLeft="@drawable/email"
+                android:background="@drawable/edit_text_border_color"
+                />
+
+            <TextView
+                android:id="@+id/forgot_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/password"
+                android:layout_marginTop="10dp"
+                android:gravity="end"
+                android:paddingRight="8dp"
+                android:fontFamily="@font/salsa"
+                android:text="Forgot password ? click here"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/colorPrimary"
+                app:fontFamily="@font/salsa"
+                android:textSize="25sp"/>
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/password"
+                android:id="@+id/btn_login"
+                android:background="@drawable/button_for_login_signup"
+                android:text="Login"
+                android:fontFamily="@font/bungee_shade"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="70dp"
+                android:textSize="18sp"
+                android:textColor="#fff"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Need a new account ? click here"
+                android:layout_below="@id/btn_login"
+                android:textColor="@color/colorPrimary"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:id="@+id/signup"
+                android:layout_marginTop="10dp"
+                android:textSize="25sp"
+                android:fontFamily="@font/salsa"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="or Login using phone"
+                android:layout_below="@id/signup"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="2dp"
+                android:id="@+id/login_phone"
+                android:fontFamily="@font/salsa"
+                android:textSize="25sp"/>
+
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/login_phone"
+                android:background="@drawable/button_for_login_signup"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="8dp"
+                android:text="Mobile"
+                android:drawableStart="@drawable/phone"
+                android:drawableLeft="@drawable/phone"
+                android:textColor="#fff"
+                android:gravity="start"
+                android:textSize="23sp"
+                android:paddingLeft="6dp"
+                android:paddingBottom="3dp"
+                tools:ignore="RtlCompat"
+                android:id="@+id/btn_phone"
+                android:paddingStart="6dp"
+                android:fontFamily="@font/bungee_shade"/>
+
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
