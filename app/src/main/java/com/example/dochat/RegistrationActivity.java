@@ -163,6 +163,7 @@ public class RegistrationActivity extends AppCompatActivity {
         hashMap.put("imageurl","default");
         hashMap.put("status","offline");
         hashMap.put("devicetoken",devicetoken);
+        hashMap.put("login_status","loggedin");
 
         RootReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

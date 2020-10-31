@@ -10,12 +10,13 @@ public class User {
     private String device_token;
     private String last_seen_date;
     private String last_seen_time;
+    private String login_status;
 
     public User(){
 
     }
 
-    public User(String uid, String username, String about,String imageurl,String status,String device_token,String last_seen_date,String last_seen_time) {
+    public User(String uid, String username, String about,String imageurl,String status,String device_token,String last_seen_date,String last_seen_time,String login_status) {
         this.uid = uid;
         this.username = username;
         this.about = about;
@@ -24,10 +25,19 @@ public class User {
         this.device_token=device_token;
         this.last_seen_date=last_seen_date;
         this.last_seen_time=last_seen_time;
+        this.login_status=login_status;
     }
 
     public String getImageurl() {
         return imageurl;
+    }
+
+    public String getLogin_status() {
+        return login_status;
+    }
+
+    public void setLogin_status(String login_status) {
+        this.login_status = login_status;
     }
 
     public String getStatus() {

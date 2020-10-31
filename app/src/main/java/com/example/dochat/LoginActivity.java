@@ -117,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                         String devicetoken= FirebaseInstanceId.getInstance().getToken();
                         HashMap<String,Object> hashMap =new HashMap<>();
                         hashMap.put("devicetoken",devicetoken);
+                        hashMap.put("login_status","loggedin");
 
                         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
                         databaseReference.updateChildren(hashMap);

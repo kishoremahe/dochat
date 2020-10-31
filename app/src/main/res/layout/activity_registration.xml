@@ -1,112 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".RegistrationActivity">
+    android:layout_height="wrap_content"
+    android:paddingBottom="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/appbarlayout">
+        android:layout_height="match_parent"
+        tools:context=".RegistrationActivity">
 
-        <include
-            layout="@layout/app_bar_layout"
-            android:id="@+id/app_bar"/>
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/appbarlayout">
+
+            <include
+                layout="@layout/app_bar_layout"
+                android:id="@+id/app_bar"/>
 
 
-    </com.google.android.material.appbar.AppBarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:src="@drawable/signup_photo"
-        android:layout_margin="20dp"
-        android:layout_below="@id/appbarlayout"
-        android:id="@+id/signup_image"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:src="@drawable/signup_photo"
+            android:layout_margin="20dp"
+            android:layout_below="@id/appbarlayout"
+            android:id="@+id/signup_image"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/email"
-        android:inputType="textEmailAddress"
-        android:hint="Email"
-        android:fontFamily="@font/quintessential"
-        android:drawableBottom="@color/colorPrimary"
-        android:layout_below="@id/signup_image"
-        android:layout_margin="20dp"
-        android:drawableStart="@drawable/email"
-        android:padding="5dp"
-        android:textFontWeight="800"
-        android:drawableLeft="@drawable/email"
-        android:background="@drawable/edit_text_border_color"
-        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/email"
+            android:inputType="textEmailAddress"
+            android:hint="Email"
+            android:fontFamily="@font/quintessential"
+            android:drawableBottom="@color/colorPrimary"
+            android:layout_below="@id/signup_image"
+            android:layout_margin="20dp"
+            android:drawableStart="@drawable/email"
+            android:padding="5dp"
+            android:textFontWeight="800"
+            android:drawableLeft="@drawable/email"
+            android:background="@drawable/edit_text_border_color"
+            />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/password1"
-        android:inputType="textPassword"
-        android:hint="password"
-        android:fontFamily="@font/quintessential"
-        android:drawableBottom="@color/colorPrimary"
-        android:layout_below="@id/email"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textFontWeight="800"
-        android:drawableStart="@drawable/password"
-        android:padding="5dp"
-        android:drawableLeft="@drawable/email"
-        android:background="@drawable/edit_text_border_color"
-        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/password1"
+            android:inputType="textPassword"
+            android:hint="password"
+            android:fontFamily="@font/quintessential"
+            android:drawableBottom="@color/colorPrimary"
+            android:layout_below="@id/email"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textFontWeight="800"
+            android:drawableStart="@drawable/password"
+            android:padding="5dp"
+            android:drawableLeft="@drawable/email"
+            android:background="@drawable/edit_text_border_color"
+            />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/password2"
-        android:inputType="textPassword"
-        android:hint="Confirm password"
-        android:fontFamily="@font/quintessential"
-        android:drawableBottom="@color/colorPrimary"
-        android:layout_below="@id/password1"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textFontWeight="800"
-        android:drawableStart="@drawable/password"
-        android:padding="5dp"
-        android:drawableLeft="@drawable/email"
-        android:background="@drawable/edit_text_border_color"
-        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/password2"
+            android:inputType="textPassword"
+            android:hint="Confirm password"
+            android:fontFamily="@font/quintessential"
+            android:drawableBottom="@color/colorPrimary"
+            android:layout_below="@id/password1"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textFontWeight="800"
+            android:drawableStart="@drawable/password"
+            android:padding="5dp"
+            android:drawableLeft="@drawable/email"
+            android:background="@drawable/edit_text_border_color"
+            />
 
-    <Button
-        android:layout_width="180dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/password2"
-        android:id="@+id/btn_register"
-        android:background="@drawable/button_for_login_signup"
-        android:text="Create Account"
-        android:fontFamily="@font/bungee_shade"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="36dp"
-        android:textColor="#fff"
-        />
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/password2"
+            android:id="@+id/btn_register"
+            android:background="@drawable/button_for_login_signup"
+            android:text="Create Account"
+            android:fontFamily="@font/bungee_shade"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="36dp"
+            android:textColor="#fff"
+            />
 
-    <TextView
-        android:id="@+id/login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btn_register"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/salsa"
-        android:gravity="center_horizontal"
-        android:text="Already have an account ? click here"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
-        tools:ignore="NotSibling" />
+        <TextView
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_register"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/salsa"
+            android:gravity="center_horizontal"
+            android:text="Already have an account ? click here"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            tools:ignore="NotSibling" />
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

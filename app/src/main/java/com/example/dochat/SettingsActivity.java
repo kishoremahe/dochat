@@ -15,6 +15,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -50,6 +51,7 @@ import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -62,6 +64,8 @@ public class SettingsActivity extends AppCompatActivity {
     private EditText Username;
     private EditText About;
     private Button Update;
+    private static int test=0;
+    private static int test1=0;
     private ImageView AddImage;
     private static int flag1=0;
     private Uri imagepath;
@@ -76,7 +80,6 @@ public class SettingsActivity extends AppCompatActivity {
         Toolbar toolbar=(Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Chatty");
-        toolbar.setSoundEffectsEnabled(true);
 
         AddImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -322,23 +325,22 @@ public class SettingsActivity extends AppCompatActivity {
             final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
             assert firebaseUser != null;
             DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("users").child(firebaseUser.getUid());
-            HashMap<String,Object> hashMap1=new HashMap<>();
 
-            if(!(imagepath ==null)){
-
+            if(imagepath != null ){
+                HashMap<String,Object> hashMap1=new HashMap<>();
                 hashMap1.put("imageurl",imagepath.toString());
                 databaseReference.updateChildren(hashMap1);
+                test1=1;
             }
-            if(!about.equals("i am using chatty")){
-
-                hashMap1.put("about",about);
-                databaseReference.updateChildren(hashMap1);
+            if(!(about.equals("i am using chatty"))){
+                HashMap<String,Object> hashMap2=new HashMap<>();
+                hashMap2.put("about",about);
+                databaseReference.updateChildren(hashMap2);
+                test1=1;
             }
-            if(!(username.equals(""))){
-
+            if(!(TextUtils.isEmpty(username))){
                 checkUserNameExistence(username);
             }
-
 
         }
     }
@@ -348,28 +350,20 @@ public class SettingsActivity extends AppCompatActivity {
         DatabaseReference usersReference=FirebaseDatabase.getInstance().getReference().child("users");
         final FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
-//        Toast.makeText(SettingsActivity.this, "in checkusernameexistence", Toast.LENGTH_SHORT).show();
         usersReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 assert firebaseUser != null;
-                DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference().child("users").child(firebaseUser.getUid());
-
                 int flag=0;
 
                 for(DataSnapshot snapshot:dataSnapshot.getChildren()){
 
-//                    Toast.makeText(SettingsActivity.this, "in checkusernameexistence for user ", Toast.LENGTH_SHORT).show();
-
-
                     if(dataSnapshot.exists()){
-
-//                        Toast.makeText(SettingsActivity.this, "in checkusernameexistence for user ", Toast.LENGTH_SHORT).show();
 
                         User user=snapshot.getValue(User.class);
 
-                        if(username.equals(user.getUsername()) && !firebaseUser.getUid().equals(user.getUid())){
+                        if((username.equals(user.getUsername())) && !(firebaseUser.getUid().equals(user.getUid()))){
 
                             flag=1;
                             Toast.makeText(SettingsActivity.this, username+" already exists", Toast.LENGTH_SHORT).show();
@@ -379,31 +373,35 @@ public class SettingsActivity extends AppCompatActivity {
                     }
 
                 }
-
                 if(flag == 0){
 
-                    HashMap<String,Object> hashMap=new HashMap<>();
-                    hashMap.put("username",username);
-                    hashMap.put("uid",firebaseUser.getUid());
-                    databaseReference.updateChildren(hashMap);
-                    SendUserToMainActivity();
+                    test=1;
+
+                    DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference().child("users").child(firebaseUser.getUid());
+                    HashMap<String,Object> hashMap3=new HashMap<>();
+                    hashMap3.put("username",username);
+                    hashMap3.put("uid",firebaseUser.getUid());
+                    databaseReference.updateChildren(hashMap3);
 
                 }
 
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
 
+        if(test == 1){
+            SendUserToMainActivity();
+        }
+
     }
 
     private void SendUserToMainActivity() {
 //        Toast.makeText(SettingsActivity.this, "in checkusernameexistence for main", Toast.LENGTH_SHORT).show();
 
-        Intent mainIntent=new Intent(getApplicationContext(),MainActivity.class);
+        Intent mainIntent=new Intent(SettingsActivity.this,MainActivity.class);
         mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);
         finish();
@@ -426,6 +424,28 @@ public class SettingsActivity extends AppCompatActivity {
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void updateUserState(String state){
+
+        FirebaseUser firebaseuser=FirebaseAuth.getInstance().getCurrentUser();
+        String currentUserId=firebaseuser.getUid();
+
+        Calendar calendar=Calendar.getInstance();
+        SimpleDateFormat currentDateFormat=new SimpleDateFormat("MM dd,yyyy");
+        SimpleDateFormat currentTimeFormat=new SimpleDateFormat("hh:mm a");
+
+        String currentDate=currentDateFormat.format(calendar.getTime());
+        String currentTime=currentTimeFormat.format(calendar.getTime());
+
+        HashMap<String,Object> hashMap1=new HashMap<>();
+        hashMap1.put("status",state);
+        hashMap1.put("last_seen_date",currentDate);
+        hashMap1.put("last_seen_time",currentTime);
+
+        DatabaseReference userRef=FirebaseDatabase.getInstance().getReference().child("users").child(currentUserId);
+        userRef.updateChildren(hashMap1);
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
@@ -433,6 +453,15 @@ public class SettingsActivity extends AppCompatActivity {
         switch(item.getItemId()){
 
             case R.id.signOut_option:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    updateUserState("offline");
+                }
+                FirebaseUser firebaseuser=FirebaseAuth.getInstance().getCurrentUser();
+                String currentUserId=firebaseuser.getUid();
+                DatabaseReference userRef=FirebaseDatabase.getInstance().getReference().child("users").child(currentUserId);
+                HashMap<String,Object> hashmap=new HashMap<>();
+                hashmap.put("login_status","loggedout");
+                userRef.updateChildren(hashmap);
                 FirebaseAuth.getInstance().signOut();
                 SendUserToLoginActivity();
                 return true;

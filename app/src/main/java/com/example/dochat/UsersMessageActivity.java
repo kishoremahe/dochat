@@ -78,6 +78,7 @@ public class UsersMessageActivity extends AppCompatActivity {
     private GroupChatAdapter groupChatAdapter;
     private RecyclerView recyclerView;
     private String Username,Usericon,About,Userid,Last_Seen_date,Last_Seen_time,Userstatus;
+    private ValueEventListener seenListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,6 +164,7 @@ public class UsersMessageActivity extends AppCompatActivity {
             }
         });
 
+        seenMessage(Userid);
 
     }
 
@@ -179,6 +181,7 @@ public class UsersMessageActivity extends AppCompatActivity {
         hashMap.put("receiver",Userid);
         hashMap.put("Time",currentTime);
         hashMap.put("Date",currentDate);
+        hashMap.put("isseen",false);
 
         msgReference.push().setValue(hashMap);
     }
@@ -287,9 +290,39 @@ public class UsersMessageActivity extends AppCompatActivity {
             Glide.with(UsersMessageActivity.this).load(Usericon).into(UserIcon);
         }
 
+    }
 
+    private void seenMessage(final String userid){
 
+        final FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("private_messages");
 
+        seenListener=databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+
+                    PrivateMessage privateMessage=dataSnapshot.getValue(PrivateMessage.class);
+
+                    assert firebaseUser != null;
+                    assert privateMessage != null;
+                    if((privateMessage.getReceiver().equals(firebaseUser.getUid())) && (privateMessage.getSender().equals(userid))){
+
+                        HashMap<String,Object> hashMap=new HashMap<>();
+                        hashMap.put("isseen",true);
+                        dataSnapshot.getRef().updateChildren(hashMap);
+
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void GetValues() {
@@ -475,6 +508,7 @@ public class UsersMessageActivity extends AppCompatActivity {
         hashMap.put("receiver",Userid);
         hashMap.put("Time",currentTime);
         hashMap.put("Date",currentDate);
+        hashMap.put("isseen",false);
 
         msgRef.push().setValue(hashMap);
 

@@ -72,6 +72,16 @@
         android:text=""
         android:textColor="#000"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image"
+        android:id="@+id/isseen"
+        android:layout_marginLeft="195dp"
+        android:layout_marginTop="5dp"
+        android:text=""
+        android:textColor="#000"/>
+
 
 
     <RelativeLayout
@@ -142,6 +152,16 @@
         android:layout_below="@id/msg"
         android:id="@+id/date"
         android:layout_marginLeft="78dp"
+        android:layout_marginTop="5dp"
+        android:text=""
+        android:textColor="#000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/msg"
+        android:id="@+id/isseen1"
+        android:layout_marginLeft="140dp"
         android:layout_marginTop="5dp"
         android:text=""
         android:textColor="#000"/>

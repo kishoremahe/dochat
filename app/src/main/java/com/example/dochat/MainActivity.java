@@ -3,14 +3,17 @@ package com.example.dochat;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.app.TaskStackBuilder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.icu.util.Calendar;
@@ -23,12 +26,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import com.example.dochat.Adapter.ViewPagerAdapter;
 import com.example.dochat.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 //import com.google.api.OAuthRequirementsOrBuilder;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,19 +45,32 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.internal.FirebaseAppHelper;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.zip.Inflater;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    private Toolbar toolbar,toolBar;
     private ViewPagerAdapter viewPagerAdapter;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private DrawerLayout mDrawerLayout;
+    private NavigationView navigateView;
+    private ActionBarDrawerToggle mToggle;
     private FirebaseUser firebaseUser;
     private FirebaseAuth firebaseAuth;
+    private CircleImageView UserIcon;
+    private TextView Username;
+    private String current_user_id;
+
 
 
 
@@ -61,13 +81,98 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         firebaseAuth=FirebaseAuth.getInstance();
+        firebaseUser=firebaseAuth.getCurrentUser();
+        assert firebaseUser != null;
+
 
         toolbar=(Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Chatty");
 
-        firebaseUser=firebaseAuth.getCurrentUser();
+        mDrawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
+        mToggle=new ActionBarDrawerToggle(MainActivity.this,mDrawerLayout,toolbar,R.string.open,R.string.close);
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
 
+
+
+        navigateView=(NavigationView)findViewById(R.id.navigate_view);
+        View headerView=navigateView.getHeaderView(0);
+        UserIcon=(CircleImageView)headerView.findViewById(R.id.profileImageForNavigation);
+        Username=(TextView)headerView.findViewById(R.id.usernameForNavigation);
+
+
+        toolBar=(Toolbar)headerView.findViewById(R.id.appbarlayout);
+        setSupportActionBar(toolBar);
+        getSupportActionBar().setTitle("Dochat");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        navigateView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch(item.getItemId()) {
+
+                    case R.id.find_friends_option:
+                        startActivity(new Intent(MainActivity.this, FindFriendsActivity.class));
+                        return true;
+                    case R.id.logout_option:
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                            updateUserState("offline");
+                        }
+                        FirebaseUser firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+                        String currentUserId = firebaseuser.getUid();
+                        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(currentUserId);
+                        HashMap<String, Object> hashmap = new HashMap<>();
+                        hashmap.put("login_status", "loggedout");
+                        userRef.updateChildren(hashmap);
+                        firebaseAuth.signOut();
+                        SendUserToLoginActivity();
+                        return true;
+                    case R.id.settings_option:
+                        Intent settingsIntent = new Intent(getApplicationContext(), SettingsActivity.class);
+                        startActivity(settingsIntent);
+                        return true;
+                    case R.id.create_group_option:
+                        GroupCreation();
+                        return true;
+                    default:
+                        return true;
+
+                }
+            }
+        });
+
+    }
+
+    private void setValues() {
+        FirebaseAuth fAuth=FirebaseAuth.getInstance();
+        FirebaseUser fUser=fAuth.getCurrentUser();
+        assert fUser != null;
+        String Current_user_id=fUser.getUid();
+
+        DatabaseReference UserRef= FirebaseDatabase.getInstance().getReference().child("users").child(Current_user_id);
+        UserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                User user=dataSnapshot.getValue(User.class);
+                assert user != null;
+                Username.setText(user.getUsername());
+                if(user.getImageurl().equals("default")){
+                    Glide.with(getApplicationContext()).load(R.drawable.profile_image).into(UserIcon);
+                }
+                else{
+                    Glide.with(getApplicationContext()).load(user.getImageurl()).into(UserIcon);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 
@@ -78,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseUser firebaseUser1=FirebaseAuth.getInstance().getCurrentUser();
 
-        if(firebaseUser == null) {
+        if(firebaseUser1 == null) {
 
             SendUserToLoginActivity();
         }
@@ -157,6 +262,8 @@ public class MainActivity extends AppCompatActivity {
                         tabLayout=findViewById(R.id.tablayout);
                         tabLayout.setupWithViewPager(viewPager);
 
+                        setValues();
+
 
                     }
 
@@ -173,41 +280,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-
-        getMenuInflater().inflate(R.menu.mainactivity_options_menu,menu);
-        return true;
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        super.onOptionsItemSelected(item);
-
-        switch(item.getItemId()){
-
-            case R.id.find_friends_option:
-                startActivity(new Intent(MainActivity.this,FindFriendsActivity.class));
-                return true;
-            case R.id.logout_option:
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    updateUserState("offline");
-                }
-                firebaseAuth.signOut();
-                SendUserToLoginActivity();
-                return true;
-            case R.id.settings_option:
-                Intent settingsIntent=new Intent(getApplicationContext(),SettingsActivity.class);
-                startActivity(settingsIntent);
-                return true;
-            case R.id.create_group_option:
-                GroupCreation();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if(mToggle.onOptionsItemSelected(item)){
+            return true;
         }
+        return  super.onOptionsItemSelected(item);
     }
 
     private void GroupCreation() {

@@ -72,6 +72,7 @@ public class PrivateChatAdapter extends RecyclerView.Adapter<PrivateChatHolder> 
 
                 holder.RefForUser1.setVisibility(View.VISIBLE);
                 holder.image.setVisibility(View.VISIBLE);
+
 //                Glide.with(context).load(Chats.get(position).getMessage()).into(holder.image);
                 Picasso.get().load(Chats.get(position).getMessage()).resize(250,250).into(holder.image);
                 holder.Date1.setText(Chats.get(position).getDate());
@@ -114,6 +115,18 @@ public class PrivateChatAdapter extends RecyclerView.Adapter<PrivateChatHolder> 
 
                     }
                 });
+                if(position == Chats.size()-1){
+
+                    if(Chats.get(position).isIsseen()){
+                        holder.IsSeen.setText("Seen");
+                    }
+                    else{
+                        holder.IsSeen.setText("Delivered");
+                    }
+                }
+                else{
+                    holder.IsSeen.setVisibility(View.GONE);
+                }
 
 
             }
@@ -162,6 +175,25 @@ public class PrivateChatAdapter extends RecyclerView.Adapter<PrivateChatHolder> 
 
                     }
                 });
+                if(position == Chats.size()-1){
+                    FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+                    String current_user_id=firebaseUser.getUid();
+
+                    if(!(Chats.get(position).getReceiver().equals(current_user_id))){
+
+                        if(Chats.get(position).isIsseen()){
+                            holder.IsSeen1.setText("Seen");
+                        }
+                        else{
+                            holder.IsSeen1.setText("Delivered");
+                        }
+
+                    }
+
+                }
+                else{
+                    holder.IsSeen1.setVisibility(View.GONE);
+                }
 
 
             }
@@ -205,7 +237,7 @@ public class PrivateChatAdapter extends RecyclerView.Adapter<PrivateChatHolder> 
 class PrivateChatHolder extends RecyclerView.ViewHolder{
 
     public TextView Username,Username1;
-    public TextView Message,Date,Time,Date1,Time1;
+    public TextView Message,Date,Time,Date1,Time1,IsSeen,IsSeen1;
     public CircleImageView UserIcon,UserIcon1;
     public RelativeLayout RefForUser,RefForUser1;
     public ImageView image;
@@ -225,5 +257,7 @@ class PrivateChatHolder extends RecyclerView.ViewHolder{
         image=itemView.findViewById(R.id.image);
         Date1=itemView.findViewById(R.id.date1);
         Time1=itemView.findViewById(R.id.time1);
+        IsSeen=itemView.findViewById(R.id.isseen);
+        IsSeen1=itemView.findViewById(R.id.isseen1);
     }
 }

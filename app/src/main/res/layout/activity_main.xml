@@ -1,65 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_width="match_parent"
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <com.google.android.material.appbar.AppBarLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/appbarlayout">
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-        <include
-            layout="@layout/app_bar_layout"
-            android:id="@+id/app_bar"
-            >
-        </include>
 
-        <com.google.android.material.tabs.TabLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tablayout"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:id="@+id/appbarlayout">
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
+            <include
+                layout="@layout/app_bar_layout"
+                android:id="@+id/app_bar"
+                >
+            </include>
+
+            <com.google.android.material.tabs.TabLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tab1"
-                android:text="Chats"/>
+                android:id="@+id/tablayout"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tab2"
-                android:text="group"/>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tab1"
+                    android:text="Chats"/>
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tab3"
-                android:text="contacts"/>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tab2"
+                    android:text="group"/>
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tab4"
-                android:text="Requests"/>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tab3"
+                    android:text="contacts"/>
 
-        </com.google.android.material.tabs.TabLayout>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tab4"
+                    android:text="Requests"/>
 
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.viewpager.widget.ViewPager
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/appbarlayout"
-        android:id="@+id/viewpager">
-
-    </androidx.viewpager.widget.ViewPager>
+            </com.google.android.material.tabs.TabLayout>
 
 
-</RelativeLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appbarlayout"
+            android:layout_marginTop="0dp">
+
+        </androidx.viewpager.widget.ViewPager>
+
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/mainactivity_options_menu"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header_fo_navigate_drawer"
+        android:id="@+id/navigate_view"
+        >
+
+
+    </com.google.android.material.navigation.NavigationView>
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
