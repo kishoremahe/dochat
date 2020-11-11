@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+
     tools:ignore="MissingDefaultResource">
 
     <include
@@ -20,22 +21,19 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/profile_image"
-        app:civ_border_color="@color/colorPrimary"
+        app:civ_border_color="#fb5b5a"
         app:civ_border_width="2dp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="username"
         android:id="@+id/usernameForNavigation"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#fb5b5a"
         android:textSize="26sp"
         android:layout_marginLeft="83dp"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/salsa"/>
-
-
-
+        android:fontFamily="@font/bangers"/>
 
 
 </LinearLayout>

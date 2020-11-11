@@ -77,9 +77,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         InitializeFields();
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Chatty");
 
         AddImage.setOnClickListener(new View.OnClickListener() {
             @Override

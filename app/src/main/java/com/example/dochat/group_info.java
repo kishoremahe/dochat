@@ -101,7 +101,6 @@ public class group_info extends AppCompatActivity {
 
         }
 
-
         ReadGroupMembers(groupname);
 
         GroupIcon.setOnClickListener(new View.OnClickListener() {

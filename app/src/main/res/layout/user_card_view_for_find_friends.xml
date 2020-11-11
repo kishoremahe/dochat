@@ -2,23 +2,29 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorPrimaryDark"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
         android:id="@+id/card_view_for_find_friends">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/for_user_card_view"
+            >
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:id="@+id/profilePic"
                 app:civ_border_width="1dp"
-                app:civ_border_color="@color/colorPrimary"
+                app:civ_border_color="#fb5b5a"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"/>
@@ -32,7 +38,7 @@
                 android:fontFamily="@font/salsa"
                 android:textFontWeight="800"
                 android:textSize="22sp"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#fff"
                 android:id="@+id/username"/>
 
             <TextView

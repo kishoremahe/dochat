@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:paddingBottom="20dp"
+    android:background="@color/colorPrimaryDark"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:layout_gravity="center"
         android:layout_height="match_parent"
         tools:context=".RegistrationActivity">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:id="@+id/appbarlayout">
+            android:text="D0CHAT"
+            android:textFontWeight="800"
+            android:textColor="#fb5b5a"
+            android:layout_marginLeft="87dp"
+            android:textSize="70dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/app_name"
+            android:fontFamily="@font/bangers"
+            />
 
-            <include
-                layout="@layout/app_bar_layout"
-                android:id="@+id/app_bar"/>
-
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="260dp"
-            android:src="@drawable/signup_photo"
-            android:layout_margin="20dp"
-            android:layout_below="@id/appbarlayout"
-            android:id="@+id/signup_image"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -39,13 +37,14 @@
             android:id="@+id/email"
             android:inputType="textEmailAddress"
             android:hint="Email"
+            android:layout_below="@id/app_name"
             android:fontFamily="@font/quintessential"
             android:drawableBottom="@color/colorPrimary"
-            android:layout_below="@id/signup_image"
             android:layout_margin="20dp"
             android:drawableStart="@drawable/email"
             android:padding="5dp"
             android:textFontWeight="800"
+            android:textColor="#fff"
             android:drawableLeft="@drawable/email"
             android:background="@drawable/edit_text_border_color"
             />
@@ -62,6 +61,7 @@
             android:layout_marginTop="0dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:textColor="#fff"
             android:textFontWeight="800"
             android:drawableStart="@drawable/password"
             android:padding="5dp"
@@ -79,6 +79,7 @@
             android:drawableBottom="@color/colorPrimary"
             android:layout_below="@id/password1"
             android:layout_marginTop="20dp"
+            android:textColor="#fff"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:textFontWeight="800"
@@ -95,7 +96,7 @@
             android:id="@+id/btn_register"
             android:background="@drawable/button_for_login_signup"
             android:text="Create Account"
-            android:fontFamily="@font/bungee_shade"
+            android:fontFamily="@font/bangers"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="36dp"
             android:textColor="#fff"
@@ -111,7 +112,7 @@
             android:gravity="center_horizontal"
             android:text="Already have an account ? click here"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#fff"
             android:textSize="20sp"
             tools:ignore="NotSibling" />
 

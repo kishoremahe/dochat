@@ -4,30 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity">
+    tools:context=".SettingsActivity"
+    android:background="@color/colorPrimaryDark">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
+
+    <TextView
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:id="@+id/appbarlayout">
-
-        <include
-            layout="@layout/app_bar_layout"
-            android:id="@+id/app_bar"/>
-
-
-    </com.google.android.material.appbar.AppBarLayout>
+        android:text="D0CHAT"
+        android:textFontWeight="800"
+        android:textColor="#fb5b5a"
+        android:layout_marginLeft="87dp"
+        android:textSize="70dp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/app_name"
+        android:fontFamily="@font/bangers"
+        />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:src="@drawable/profile_image"
         android:id="@+id/profileImage"
-        android:layout_below="@id/appbarlayout"
+        android:layout_below="@id/app_name"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="20dp"
         app:civ_border_width="2dp"
-        app:civ_border_color="@color/colorPrimary"
+        app:civ_border_color="#fb5b5a"
         android:layout_marginStart="80dp" />
 
     <ImageView

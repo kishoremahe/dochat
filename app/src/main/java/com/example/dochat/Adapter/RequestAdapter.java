@@ -55,7 +55,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestHolder> {
     public void onBindViewHolder(@NonNull RequestHolder holder, final int position) {
 
         if(users.size() == 0){
-            Toast.makeText(context, "members empty", Toast.LENGTH_SHORT).show();
+
         }
         else{
 

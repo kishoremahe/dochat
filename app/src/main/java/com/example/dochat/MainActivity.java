@@ -87,13 +87,12 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar=(Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Chatty");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("DOCHAT");
 
         mDrawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
         mToggle=new ActionBarDrawerToggle(MainActivity.this,mDrawerLayout,toolbar,R.string.open,R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
-
 
 
         navigateView=(NavigationView)findViewById(R.id.navigate_view);
@@ -104,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolBar=(Toolbar)headerView.findViewById(R.id.appbarlayout);
         setSupportActionBar(toolBar);
-        getSupportActionBar().setTitle("Dochat");
+        getSupportActionBar().setTitle("DOCHAT");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         navigateView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

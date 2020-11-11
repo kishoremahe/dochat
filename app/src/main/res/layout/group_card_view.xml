@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryDark">
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -10,20 +12,23 @@
         app:cardElevation="3dp"
         android:layout_margin="10dp"
         android:padding="10dp"
+        android:background="#465881"
         android:layout_gravity="center"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
         android:id="@+id/card_view_for_group"
         >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/for_user_card_view"
             >
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="20dp"
-                app:civ_border_color="@color/colorPrimary"
+                app:civ_border_color="#fb5b5a"
                 app:civ_border_width="2dp"
                 android:id="@+id/profile_image_for_group"/>
 
@@ -40,7 +45,7 @@
                 android:textSize="25sp"
                 android:layout_toRightOf="@id/profile_image_for_group"
                 android:padding="5dp"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#fff"
                 android:id="@+id/name_group"/>
 
 

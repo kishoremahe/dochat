@@ -45,10 +45,6 @@ public class LoginActivity extends AppCompatActivity {
 
         InitializeFields();
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Chatty");
-
-
         SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

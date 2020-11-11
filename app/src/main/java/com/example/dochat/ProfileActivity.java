@@ -51,10 +51,6 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        Toolbar toolbar=findViewById(R.id.appbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Chatty");
-
         senderUserId=FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         InitializeFields();

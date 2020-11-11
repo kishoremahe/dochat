@@ -9,7 +9,8 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/appbar">
+        android:id="@+id/appbar"
+        android:background="@color/colorPrimaryDark">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
@@ -27,7 +28,7 @@
                     android:layout_marginTop="5dp"
                     android:src="@drawable/profile_image"
                     app:civ_border_width="1dp"
-                    app:civ_border_color="#000"
+                    app:civ_border_color="#fb5b5a"
                     android:id="@+id/user_icon"/>
 
                 <TextView
@@ -41,6 +42,7 @@
                     android:layout_toRightOf="@id/user_icon"
                     android:textAlignment="textStart"
                     android:gravity="start"
+                    android:textColor="#fff"
                     android:textFontWeight="800"
                     android:paddingLeft="20dp"
                     android:paddingTop="5dp"/>
@@ -51,10 +53,10 @@
                     android:id="@+id/last_seen_time"
                     android:fontFamily="@font/quintessential"
                     android:textSize="15sp"
-                    android:text="mahe"
+                    android:text=""
                     android:layout_below="@id/user_name"
                     android:layout_marginLeft="60dp"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textFontWeight="800"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="4dp"/>
@@ -62,8 +64,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
-                    android:text="kisohre"
-                    android:textColor="#000"
+                    android:text=""
+                    android:textColor="#fff"
                     android:textFontWeight="800"
                     android:id="@+id/last_seen_date"
                     android:fontFamily="@font/quintessential"
@@ -71,8 +73,6 @@
                     android:layout_toRightOf="@id/last_seen_time"
                     android:layout_below="@id/user_name"
                     android:layout_marginBottom="4dp"/>
-
-
 
             </RelativeLayout>
 
@@ -85,6 +85,7 @@
         android:layout_height="match_parent"
         android:id="@+id/recycleview_for_usermsg"
         android:layout_below="@id/appbar"
+        android:background="@color/colorPrimaryDark"
         android:layout_above="@id/forabove">
 
 
@@ -94,7 +95,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
+        android:background="@color/colorPrimaryDark"
         android:padding="5dp"
         android:layout_alignParentBottom="true"
         android:id="@+id/forabove"
@@ -120,7 +121,7 @@
             android:layout_centerVertical="true"
             android:hint="write message"
             android:fontFamily="@font/salsa"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textFontWeight="800"
             android:padding="15dp"
             android:background="@drawable/searchbar_background"

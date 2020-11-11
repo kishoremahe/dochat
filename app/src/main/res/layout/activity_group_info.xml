@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".group_info">
 
     <include
@@ -16,7 +17,7 @@
         android:layout_height="250dp"
         android:layout_below="@id/toolbar"
         app:civ_border_width="1dp"
-        app:civ_border_color="@color/colorPrimary"
+        app:civ_border_color="#fb5b5a"
         android:src="@drawable/profile_image"
         android:layout_marginLeft="80dp"
         android:id="@+id/group_icon"
@@ -28,9 +29,9 @@
         android:id="@+id/tv_group_members"
         android:layout_below="@id/group_icon"
         android:layout_margin="20dp"
-        android:text="Group members"
+        android:text="GROUP MEMBERS"
         android:fontFamily="@font/salsa"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#fb5b5a"
         android:textSize="25sp"
         android:textAlignment="center"
         android:background="@drawable/edit_text_border_color"
@@ -40,6 +41,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
         android:id="@+id/recycleView_for_group_members"
         android:layout_below="@id/tv_group_members">
 
