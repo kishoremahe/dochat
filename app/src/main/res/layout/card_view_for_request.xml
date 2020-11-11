@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:visibility="gone"
+    android:background="@color/colorPrimaryDark"
     android:id="@+id/ForRequest"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -11,11 +12,13 @@
         android:layout_height="160dp"
         android:id="@+id/card_view_for_requests"
         app:cardElevation="3dp"
+        android:background="@color/colorPrimaryDark"
         >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryDark">
 
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -47,7 +50,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/salsa"
                 android:id="@+id/about"
-                android:textColor="#000"
+                android:textColor="#fff"
                 android:textSize="20sp"
                 android:textFontWeight="700"
                 android:text="I am using chatty !"/>
