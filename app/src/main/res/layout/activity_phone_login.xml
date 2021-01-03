@@ -58,7 +58,7 @@
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
         android:id="@+id/btn_verify"
-        android:text="Verify"
+        android:text="Send Verify code"
         android:textColor="#fff"
         android:background="@drawable/button_for_login_signup"
         android:fontFamily="@font/salsa"

@@ -16,6 +16,7 @@
         android:layout_gravity="center"
         app:cardBackgroundColor="@color/colorPrimaryDark"
         android:id="@+id/card_view_for_group"
+        android:visibility="gone"
         >
 
         <RelativeLayout

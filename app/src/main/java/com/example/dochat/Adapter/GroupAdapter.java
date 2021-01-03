@@ -51,6 +51,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupHolder> {
         }
         else{
 
+            holder.CardviewForGroup.setVisibility(View.VISIBLE);
             final Group group=groups.get(position);
             holder.GroupName.setText(group.getGroup_name());
 

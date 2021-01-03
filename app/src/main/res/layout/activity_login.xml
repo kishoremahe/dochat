@@ -95,47 +95,60 @@
                 android:textColor="#fff"
                 />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Signup"
-                android:layout_below="@id/btn_login"
-                android:textColor="#fff"
-                android:textAlignment="center"
-                android:gravity="center_horizontal"
-                android:id="@+id/signup"
-                android:layout_marginTop="30dp"
-                android:textSize="23sp"
-                android:fontFamily="@font/salsa"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="or Login using phone"
-                android:layout_below="@id/signup"
-                android:textAlignment="center"
-                android:gravity="center_horizontal"
-                android:textColor="#fff"
-                android:layout_marginTop="2dp"
-                android:id="@+id/login_phone"
-                android:fontFamily="@font/salsa"
-                android:textSize="23sp"/>
-
             <Button
                 android:layout_width="260dp"
-                android:layout_height="60dp"
-                android:layout_below="@id/login_phone"
+                android:layout_height="50dp"
+                android:layout_below="@id/btn_login"
+                android:id="@+id/btn_signup"
                 android:background="@drawable/button_for_login_signup"
+                android:text="SIGNUP"
                 android:layout_marginLeft="80dp"
-                android:layout_marginTop="17dp"
-                android:text="Mobile"
+                android:layout_marginTop="30dp"
+                android:textSize="18sp"
                 android:textColor="#fff"
-                android:textSize="23sp"
-                android:textAlignment="viewStart"
-                android:id="@+id/btn_phone"
-                android:paddingLeft="50dp"
-                android:drawableStart="@drawable/phone"
-                android:drawableLeft="@drawable/phone" />
+                />
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Signup"-->
+<!--                android:layout_below="@id/btn_login"-->
+<!--                android:textColor="#fff"-->
+<!--                android:textAlignment="center"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                android:id="@+id/signup"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:textSize="23sp"-->
+<!--                android:fontFamily="@font/salsa"/>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="or Login using phone"-->
+<!--                android:layout_below="@id/signup"-->
+<!--                android:textAlignment="center"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                android:textColor="#fff"-->
+<!--                android:layout_marginTop="2dp"-->
+<!--                android:id="@+id/login_phone"-->
+<!--                android:fontFamily="@font/salsa"-->
+<!--                android:textSize="23sp"/>-->
+
+<!--            <Button-->
+<!--                android:layout_width="260dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_below="@id/login_phone"-->
+<!--                android:background="@drawable/button_for_login_signup"-->
+<!--                android:layout_marginLeft="80dp"-->
+<!--                android:layout_marginTop="17dp"-->
+<!--                android:text="Mobile"-->
+<!--                android:textColor="#fff"-->
+<!--                android:textSize="23sp"-->
+<!--                android:textAlignment="viewStart"-->
+<!--                android:id="@+id/btn_phone"-->
+<!--                android:paddingLeft="50dp"-->
+<!--                android:drawableStart="@drawable/phone"-->
+<!--                android:drawableLeft="@drawable/phone" />-->
 
 
         </RelativeLayout>

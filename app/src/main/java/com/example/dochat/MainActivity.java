@@ -106,6 +106,14 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("DOCHAT");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager());
+
+        viewPager=findViewById(R.id.viewpager);
+        viewPager.setAdapter(viewPagerAdapter);
+
+        tabLayout=findViewById(R.id.tablayout);
+        tabLayout.setupWithViewPager(viewPager);
+
         navigateView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -144,6 +152,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser firebaseUser1=FirebaseAuth.getInstance().getCurrentUser();
+
+        if(firebaseUser1 == null) {
+
+            SendUserToLoginActivity();
+        }
+        else{
+
+            CheckForUsernameExistence();
+
+        }
+
+
+    }
+
     private void setValues() {
         FirebaseAuth fAuth=FirebaseAuth.getInstance();
         FirebaseUser fUser=fAuth.getCurrentUser();
@@ -173,27 +201,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        FirebaseUser firebaseUser1=FirebaseAuth.getInstance().getCurrentUser();
-
-        if(firebaseUser1 == null) {
-
-            SendUserToLoginActivity();
-        }
-        else{
-
-           CheckForUsernameExistence();
-
-        }
-        
-    }
-
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -241,6 +248,7 @@ public class MainActivity extends AppCompatActivity {
         final FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
         final DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("users");
 
+        assert firebaseUser != null;
         databaseReference.child(firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -249,17 +257,11 @@ public class MainActivity extends AppCompatActivity {
 
                     User user=dataSnapshot.getValue(User.class);
 
+                    assert user != null;
                     if(user.getUsername().equals("")){
                         SendUserToSettingsActivity();
                     }
                     else{
-                        viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager());
-
-                        viewPager=findViewById(R.id.viewpager);
-                        viewPager.setAdapter(viewPagerAdapter);
-
-                        tabLayout=findViewById(R.id.tablayout);
-                        tabLayout.setupWithViewPager(viewPager);
 
                         setValues();
 
@@ -354,7 +356,7 @@ public class MainActivity extends AppCompatActivity {
     private void SendUserToLoginActivity() {
 
         Intent loginIntent=new Intent(getApplicationContext(),LoginActivity.class);
-        loginIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        loginIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(loginIntent);
         finish();
     }

@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private EditText Email,Password;
-    private Button LoginBtn,PhoneBtn;
+    private Button LoginBtn,PhoneBtn,SignupBtn;
     private TextView ForgotPassword,SignUp;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog loadingBar;
@@ -45,7 +45,14 @@ public class LoginActivity extends AppCompatActivity {
 
         InitializeFields();
 
-        SignUp.setOnClickListener(new View.OnClickListener() {
+//        PhoneBtn.setOnClickListener((new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                SendUserToPhoneLoginActivity();
+//            }
+//        }));
+
+        SignupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -73,14 +80,22 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private void SendUserToPhoneLoginActivity()
+    {
+        Intent phoneLoginIntent=new Intent(getApplicationContext(),PhoneLoginActivity.class);
+//        phoneLoginIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(phoneLoginIntent);
+//        finish();
+    }
+
     private void InitializeFields() {
 
         Email=(EditText)findViewById(R.id.email);
         Password=(EditText)findViewById(R.id.password);
         LoginBtn=(Button)findViewById(R.id.btn_login);
-        PhoneBtn=(Button)findViewById(R.id.btn_phone);
+//        PhoneBtn=(Button)findViewById(R.id.btn_phone);
         ForgotPassword=(TextView)findViewById(R.id.forgot_password);
-        SignUp=(TextView)findViewById(R.id.signup);
+        SignupBtn=(Button)findViewById(R.id.btn_signup);
         toolbar=(Toolbar)findViewById(R.id.app_bar);
         loadingBar=new ProgressDialog(LoginActivity.this);
         firebaseAuth=FirebaseAuth.getInstance();

@@ -72,6 +72,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserHolder> {
             String s="k";
         }
         else{
+            holder.cardView.setVisibility(View.VISIBLE);
             String usrname=users.get(position).getUsername();
             holder.UserName.setText(usrname);
 

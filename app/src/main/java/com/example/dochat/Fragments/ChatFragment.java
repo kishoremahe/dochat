@@ -71,7 +71,6 @@ public class ChatFragment extends Fragment {
         DatabaseReference UserRef=FirebaseDatabase.getInstance().getReference().child("users");
         final HashMap<String, Object> ForMsg = new HashMap<>();
 
-
         chatRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -125,6 +124,7 @@ public class ChatFragment extends Fragment {
                             HashMap<String,Object> hashMap=new HashMap<>();
                             hashMap.put("user_id",user.getUid());
                             ChatList.child(user.getUid()).setValue(hashMap);
+
                         }
                     }
                 }

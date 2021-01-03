@@ -101,7 +101,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                     loadingBar.setTitle("Creating new account..");
                     loadingBar.setMessage("Please wait when new account is being created.");
-                    loadingBar.setCanceledOnTouchOutside(true);
+                    loadingBar.setCanceledOnTouchOutside(false);
                     loadingBar.show();
 
                     FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
